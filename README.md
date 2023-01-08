@@ -17,6 +17,7 @@
 - Spring Boot Security
 - Spring Boot Gateway
 - Postman
+- Postgresql
 - Mockito
 - Swagger
 - Junit 5
@@ -29,6 +30,9 @@
  - Clona este reposiotrio utilizando `git clone https://github.com/khebinSd/KrugerSFinalTask`
  - Es necesario tener instalado el JDK para Java 17.
  - Postman u otra herramienta como Thunder Client o Insonmia para el test de la API
+ - Tener Postgresql instalado y ejecutando en el puerto 5432.
+ - Crear una base de datos de nombre `ksfinaltask`
+ - Establecer en los archivos de configuración tanto de `company-microservicio` y `customer-microservicio` las credenciales de conección a la base de datos
 
  ### Pasos
 
