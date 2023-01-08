@@ -1,0 +1,810 @@
+{
+	"info": {
+		"_postman_id": "eef8c789-7ef8-4f94-9c85-c0fb3e9d715e",
+		"name": "TaskKrugerStarColletions",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24819708"
+	},
+	"item": [
+		{
+			"name": "Sin balanceador de carga",
+			"item": [
+				{
+					"name": "Customers",
+					"item": [
+						{
+							"name": "postCustomer",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"identificationNumber\": \"1725273823\",\r\n    \"firstName\": \"Kevin\",\r\n    \"lastName\": \"Mantilla\",\r\n    \"email\": \"kevsdinM@gmail.com\",\r\n    \"identificationType\": \"CI\",\r\n    \"cellPhone\": \"0986261197\",\r\n    \"companyId\": 1,\r\n    \"branchs\": [\r\n        {\r\n            \"address\":\"Av del cofre y letra\",\r\n            \"province\":\"Pichincha\",\r\n            \"city\":\"Quito\",\r\n            \"isMatriz\": true,\r\n            \"street\":\"CALLE 1\"\r\n        },\r\n        {\r\n            \"address\":\"Av del mentor e Yelandar\",\r\n            \"province\":\"Guayas\",\r\n            \"city\":\"Guayaquil\",\r\n            \"isMatriz\": false,\r\n            \"street\":\"CALLE 2\"\r\n        }\r\n        ,\r\n        {\r\n            \"address\":\"Av del coco y puerta\",\r\n            \"city\":\"Cuenca\",\r\n            \"province\":\"Azuay\",\r\n            \"isMatriz\": false,\r\n            \"street\":\"CALLE 3\"\r\n        }\r\n    ],\r\n    \"state\": \"CREATED\",\r\n    \"createAt\": \"2023-01-06\",\r\n    \"updateAt\": \"2023-01-06\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9090/customers",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"customers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAllCustomers",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9090/customers/all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"customers",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAllCustomersByName",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9090/customers/name?firstName=José",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"customers",
+										"name"
+									],
+									"query": [
+										{
+											"key": "firstName",
+											"value": "José"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAllCustomersByLastName",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9090/customers/lastname?lastName=Madero",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"customers",
+										"lastname"
+									],
+									"query": [
+										{
+											"key": "lastName",
+											"value": "Madero"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAllCustomersByIdentification",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9090/customers/identification?identification=1725273823",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"customers",
+										"identification"
+									],
+									"query": [
+										{
+											"key": "identification",
+											"value": "1725273823"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getCustomerById",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9090/customers/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"customers",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteCustomerById",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9090/customers/100",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"customers",
+										"100"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateCustomerById",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"José\",\r\n    \"lastName\": \"Maderito\",\r\n    \"identificationType\": \"CI\",\r\n    \"cellPhone\": \"0986261197\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9090/customers/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"customers",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateCustomerMatrizBranch",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"José\",\r\n    \"lastName\": \"Maderito\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9090/customers/1/branch/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"customers",
+										"1",
+										"branch",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Branch",
+					"item": [
+						{
+							"name": "getBranches",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9090/branchs",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"branchs"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getBranchById",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9090/branchs/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"branchs",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createBranch",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"address\":\"Av del test y test\",\r\n    \"city\":\"Riobamba\",\r\n    \"customerId\": 1,    \r\n    \"street\":\"CALLE 100\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9090/branchs",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"branchs"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getBranchsByCustomerId",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9090/customers/1/branchs",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9090",
+									"path": [
+										"customers",
+										"1",
+										"branchs"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Companies",
+					"item": [
+						{
+							"name": "getCompanies",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9091/companies",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9091",
+									"path": [
+										"companies"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Con balanceador de carga",
+			"item": [
+				{
+					"name": "Customers",
+					"item": [
+						{
+							"name": "postCustomer",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"identificationNumber\": \"1725273821\",\r\n    \"firstName\": \"Kevin\",\r\n    \"lastName\": \"Mantilla\",\r\n    \"email\": \"ksevinM@gmail.com\",\r\n    \"identificationType\": \"CI\",\r\n    \"cellPhone\": \"0986261197\",\r\n    \"companyId\": 1,\r\n    \"branchs\": [\r\n        {\r\n            \"address\":\"Av del cofre y letra\",\r\n            \"province\":\"Pichincha\",\r\n            \"city\":\"Quito\",\r\n            \"isMatriz\": true,\r\n            \"street\":\"CALLE 1\"\r\n        },\r\n        {\r\n            \"address\":\"Av del mentor e Yelandar\",\r\n            \"province\":\"Guayas\",\r\n            \"city\":\"Guayaquil\",\r\n            \"isMatriz\": false,\r\n            \"street\":\"CALLE 2\"\r\n        }\r\n        ,\r\n        {\r\n            \"address\":\"Av del coco y puerta\",\r\n            \"city\":\"Cuenca\",\r\n            \"province\":\"Azuay\",\r\n            \"isMatriz\": false,\r\n            \"street\":\"CALLE 3\"\r\n        }\r\n    ],\r\n    \"state\": \"CREATED\",\r\n    \"createAt\": \"2023-01-06\",\r\n    \"updateAt\": \"2023-01-06\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8082/customers",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"customers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAllCustomers",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8082/customers/all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"customers",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAllCustomersByName",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8082/customers/name?firstName=José",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"customers",
+										"name"
+									],
+									"query": [
+										{
+											"key": "firstName",
+											"value": "José"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAllCustomersByLastName",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8082/customers/lastname",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"customers",
+										"lastname"
+									],
+									"query": [
+										{
+											"key": "lastName",
+											"value": "Madero",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAllCustomersByIdentification",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8082/customers/identification?identification=1725273823",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"customers",
+										"identification"
+									],
+									"query": [
+										{
+											"key": "identification",
+											"value": "1725273823"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getCustomerById",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8082/customers/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"customers",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteCustomerById",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8082/customers/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"customers",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateCustomerById",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"José\",\r\n    \"lastName\": \"Maderito\",\r\n    \"identificationType\": \"CI\",\r\n    \"cellPhone\": \"0986261197\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8082/customers/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"customers",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateCustomerMatrizBranch",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"José\",\r\n    \"lastName\": \"Maderito\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8082/customers/1/branch/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"customers",
+										"1",
+										"branch",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Branch",
+					"item": [
+						{
+							"name": "getBranches",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8082/branchs",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"branchs"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getBranchById",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8082/branchs/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"branchs",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createBranch",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"address\":\"Av del test y test\",\r\n    \"city\":\"Riobamba\",\r\n    \"customerId\": 1,    \r\n    \"street\":\"CALLE 100\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8082/branchs",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"branchs"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getBranchsByCustomerId",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8082/customers/1/branchs",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"customers",
+										"1",
+										"branchs"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Companies",
+					"item": [
+						{
+							"name": "getCompanies",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8082/companies",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"companies"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "config-service",
+			"item": [
+				{
+					"name": "customer-microservice-no-auth",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/customer-microservice/default",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"customer-microservice",
+								"default"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "customer-microservice-auth",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://root:s3cr3t@localhost:8080/customer-microservice/default",
+							"protocol": "http",
+							"auth": {
+								"user": "root",
+								"password": "s3cr3t"
+							},
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"customer-microservice",
+								"default"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "company-microservice-no-auth",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/customer-microservice/default",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"customer-microservice",
+								"default"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "company-microservice-auth",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://root:s3cr3t@localhost:8080/company-microservice/default",
+							"protocol": "http",
+							"auth": {
+								"user": "root",
+								"password": "s3cr3t"
+							},
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"company-microservice",
+								"default"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
