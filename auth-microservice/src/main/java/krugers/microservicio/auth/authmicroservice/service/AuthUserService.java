@@ -29,23 +29,22 @@ public class AuthUserService {
         if(user.isPresent()){
             return null;
         }
-        String password = passwordEncoder.encode(dto.getUserName());
+        String password = passwordEncoder.encode(dto.getPassword());
         AuthUser authUser = AuthUser.builder()
-            .userName(dto.getEmail())
+            .userName(dto.getUserName())
             .password(password)
             .build();
 
         return authUserRepository.save(authUser);
     }
 
+
     public TokenDto login(AuthUserDto dto){
-        Optional<AuthUser> user =  authUserRepository.findByUserName(dto.getUserName());
-        if(!user.isPresent()){
+        Optional<AuthUser> user = authUserRepository.findByUserName(dto.getUserName());
+        if(!user.isPresent())
             return null;
-        }
-        if(passwordEncoder.matches(dto.getUserName(), user.get().getPassword()))
+        if(passwordEncoder.matches(dto.getPassword(),user.get().getPassword()))
             return new TokenDto(jwtProvider.createToken(user.get()));
-        
         return null;
     }
 

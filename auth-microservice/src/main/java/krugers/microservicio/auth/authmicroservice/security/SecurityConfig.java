@@ -1,6 +1,7 @@
 package krugers.microservicio.auth.authmicroservice.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -15,27 +16,29 @@ import krugers.microservicio.auth.authmicroservice.service.UserDetailsServiceImp
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity(prePostEnabled = true)
+// @EnableMethodSecurity(prePostEnabled = true)
 public class SecurityConfig{
 
-    @Autowired
-    UserDetailsServiceImpl userDetailsServiceImpl;
+    // @Autowired
+    // UserDetailsServiceImpl userDetailsServiceImpl;
 
-    @Autowired
-    PasswordEncoder passwordEncoder;
+    // @Autowired
+    // PasswordEncoder passwordEncoder;
 
-    AuthenticationManager authenticationManager;
+    // AuthenticationManager authenticationManager;
 
-   
+    @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
-        AuthenticationManagerBuilder builder = http.getSharedObject(AuthenticationManagerBuilder.class);
-        builder.userDetailsService(userDetailsServiceImpl).passwordEncoder(passwordEncoder);
-        authenticationManager = builder.build();
-        http.authenticationManager(authenticationManager);
-        http.csrf().disable();
-        http.cors();
-        http.authorizeHttpRequests().anyRequest().permitAll().anyRequest().authenticated();
+        http
+                .csrf().disable()
+                .authorizeHttpRequests()
+                .requestMatchers("/auth/*")
+                .permitAll()
+                .and()
+                .httpBasic();
+
         return http.build();
+
     };
 
 }
