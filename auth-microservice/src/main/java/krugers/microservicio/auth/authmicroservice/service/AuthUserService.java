@@ -2,9 +2,9 @@ package krugers.microservicio.auth.authmicroservice.service;
 
 import java.util.Optional;
 
-import org.jvnet.hk2.annotations.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import krugers.microservicio.auth.authmicroservice.dto.AuthUserDto;
 import krugers.microservicio.auth.authmicroservice.entity.AuthUser;
