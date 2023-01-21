@@ -8,3 +8,9 @@ spring:
             password: s3cr3t
 jwt:
     secret: secret
+
+admin-paths:
+    paths:
+        -
+            uri: "/customers"
+            method: "POST"

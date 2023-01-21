@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.server.ServerWebExchange;
 
+import krugers.microservicio.gateway.gatewaymicroservice.dto.RequestDto;
 import krugers.microservicio.gateway.gatewaymicroservice.dto.TokenDto;
 import reactor.core.publisher.Mono;
 
@@ -17,39 +18,36 @@ public class AuthFilter extends AbstractGatewayFilterFactory<AuthFilter.Config>{
 
     private WebClient.Builder webClient;
 
-    public AuthFilter(WebClient.Builder webClient){
+    public AuthFilter(WebClient.Builder webClient) {
         super(Config.class);
         this.webClient = webClient;
+    }
+    @Override
+    public GatewayFilter apply(Config config) {
+        return (((exchange, chain) -> {
+            if(!exchange.getRequest().getHeaders().containsKey(HttpHeaders.AUTHORIZATION))
+                return onError(exchange, HttpStatus.BAD_REQUEST);
+            String tokenHeader = exchange.getRequest().getHeaders().get(HttpHeaders.AUTHORIZATION).get(0);
+            String [] chunks = tokenHeader.split(" ");
+            if(chunks.length != 2 || !chunks[0].equals("Bearer"))
+                return onError(exchange, HttpStatus.BAD_REQUEST);
+            return webClient.build()
+                    .post()
+                    .uri("http://auth-microservice/auth/validate?token=" + chunks[1])
+                    .bodyValue(new RequestDto(exchange.getRequest().getPath().toString(), exchange.getRequest().getMethod().toString()))
+                    .retrieve().bodyToMono(TokenDto.class)
+                    .map(t -> {
+                        t.getToken();
+                        return exchange;
+                    }).flatMap(chain::filter);
+        }));
     }
 
     public Mono<Void> onError(ServerWebExchange exchange, HttpStatus status){
         ServerHttpResponse response = exchange.getResponse();
         response.setStatusCode(status);
         return response.setComplete();
-    } 
-
-    public static class Config{}
-
-    @Override
-    public GatewayFilter apply(Config config) {
-        return (((exchange, chain)->{
-            if(!exchange.getRequest().getHeaders().containsKey(HttpHeaders.AUTHORIZATION)){
-                return onError(exchange, HttpStatus.BAD_REQUEST);
-            }
-            String tokenHeader = exchange.getRequest().getHeaders().get(HttpHeaders.AUTHORIZATION).get(0);
-            String [] chunks = tokenHeader.split(" ");
-            if(chunks.length !=2 || !chunks[0].equals("Bearer")){
-                return  onError(exchange, HttpStatus.BAD_REQUEST);
-            }
-            return webClient.build()
-                .post()
-                .uri("http://localhost:8084/auth/validate?token="+chunks[1])
-                .retrieve().bodyToMono(TokenDto.class)
-                .map(t ->{
-                    t.getToken();
-                    return exchange;
-                }).flatMap(chain::filter);
-        }));
     }
-    
+
+    public static class Config {}
 }

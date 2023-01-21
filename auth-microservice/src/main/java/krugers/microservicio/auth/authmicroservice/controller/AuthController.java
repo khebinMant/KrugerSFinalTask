@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import krugers.microservicio.auth.authmicroservice.dto.AuthUserDto;
+import krugers.microservicio.auth.authmicroservice.dto.NewUserDto;
+import krugers.microservicio.auth.authmicroservice.dto.RequestDto;
 import krugers.microservicio.auth.authmicroservice.entity.AuthUser;
 import krugers.microservicio.auth.authmicroservice.entity.TokenDto;
 import krugers.microservicio.auth.authmicroservice.service.AuthUserService;
@@ -29,15 +31,15 @@ public class AuthController {
     }
 
     @PostMapping("/validate")
-    public ResponseEntity<TokenDto> validate(@RequestParam String token){
-        TokenDto tokenDto = authUserService.validate(token);
+    public ResponseEntity<TokenDto> validate(@RequestParam String token, @RequestBody RequestDto dto){
+        TokenDto tokenDto = authUserService.validate(token,dto);
         if(tokenDto == null)
             return ResponseEntity.badRequest().build();
         return ResponseEntity.ok(tokenDto);
     }
 
     @PostMapping("/create")
-    public ResponseEntity<AuthUser> create(@RequestBody AuthUserDto dto){
+    public ResponseEntity<AuthUser> create(@RequestBody NewUserDto dto){
         AuthUser authUser = authUserService.save(dto);
         if(authUser == null)
             return ResponseEntity.badRequest().build();

@@ -21,4 +21,5 @@ public class AuthUser {
     private Long id;
     private String userName;
     private String password;
+    private String role;
 }
